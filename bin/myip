@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# display my current ip address
+
+ifconfig | grep -v "127.0.0.1" | grep "inet " | cut -d\  -f2

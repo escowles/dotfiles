@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# terminal dimensions
+#   width = (cols x 7) + 10 (scroll bar adds 15 to window width)
+#   height = (rows x 16) + 7 (title bar adds 23 to window height)
+# so:
+#   padding = 10
+#   cols = 80, term width = 570, window width = 585, frame = 595
+#   rows = 28, term height = 455, window height = 478, frame = 488
+
+COLS=110     # pixels for xterm: 570  # (c x 7) + 10
+ROWS=35     #                   455  # (r x 16) + 7
+W=810 # $COLS + $SCROLL_BAR + $PADDING
+H=630 # $ROWS + $MENU_BAR + $PADDING
+OFF=0
+
+### 4-up
+if [ "$LC_TTY" = '0' ]; then
+	X=$OFF
+	Y=0
+elif [ "$LC_TTY" = '1' ]; then
+	X=$(( $W + $OFF ))
+	Y=0
+elif [ "$LC_TTY" = '2' ]; then
+	X=$(( ($W * 2) + $OFF ))
+	Y=0
+elif [ "$LC_TTY" = '3' ]; then
+	X=$(( ($W * 2) + $OFF ))
+	Y=$H
+elif [ "$LC_TTY" = '4' ]; then
+	X=$(( $W + $OFF ))
+	Y=$H
+elif [ "$LC_TTY" = '5' ]; then
+	X=$OFF
+	Y=$H
+else
+	X=$(( $LC_TTY * 20 ))
+	Y=$(( $LC_TTY * 20 ))
+fi
+
+osascript $HOME/bin/scripts/termpos.scpt $X $Y $COLS $ROWS

@@ -1,0 +1,15 @@
+[user]
+  name = Esmé Cowles
+  email = escowles@ticklefish.org
+[push]
+  default = current
+[core]
+  excludesfile = ~/.gitignore
+[diff "ansible-vault"]
+  textconv = ansible-vault view
+[diff "tnsnames.org"]
+  textconv = ansible-vault view
+[commit]
+  template = ~/.gitmessage
+[alias]
+  fixup = !git add --all && git commit --amend --no-edit

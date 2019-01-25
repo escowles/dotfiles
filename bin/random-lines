@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+
+# randomize the lines in a file
+
+open( FILE, $ARGV[0] ) || die "Couldn't open $ARGV[0]: $!\nusage: random-lines file [# of lines]\n";
+@LINES = <FILE>;
+close FILE;
+
+$n = $ARGV[1] || $#LINES + 1;
+
+for ( $i = 0; $i < $n; $i++ )
+{
+	$line = splice( @LINES, int rand( $#LINES + 1 ), 1 );
+	print "$line";
+}

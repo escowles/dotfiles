@@ -1,0 +1,9 @@
+#!/bin/sh
+
+EXT_DISPLAY_COUNT=`system_profiler SPDisplaysDataType | grep -v Retina | grep -c Resolution`
+
+if [ $EXT_DISPLAY_COUNT == 1  ]; then
+	autoterm_multi
+else
+	autoterm_mono
+fi
