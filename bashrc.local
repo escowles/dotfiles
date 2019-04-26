@@ -8,7 +8,7 @@ if [ ! "$LC_TTY" ]; then
     LC_TTY=0
 fi
 export LC_TTY
-autoterm
+gtimeout 1 autoterm # use timeout because osascript randomly hangs sometimes
 
 # prompt
 export PS1='[\u@\h] \W > ' 
