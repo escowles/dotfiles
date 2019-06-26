@@ -11,7 +11,10 @@ export LC_TTY
 gtimeout 1 autoterm # use timeout because osascript randomly hangs sometimes
 
 # prompt
-export PS1='[\u@\h] \W > ' 
+if [ ! "$HOST" ]; then
+  HOST=`hostname -s`
+fi
+export PS1='[\u@$HOST] \W > '
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH:$HOME/bin"
