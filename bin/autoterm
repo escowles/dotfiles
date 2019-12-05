@@ -1,6 +1,6 @@
 #!/bin/sh
 
-EXT_DISPLAY_COUNT=`system_profiler SPDisplaysDataType | grep -v Retina | grep -c Resolution`
+EXT_DISPLAY_COUNT=`system_profiler SPDisplaysDataType | grep -v Retina | grep -v "1680 x 1050" | grep -c Resolution`
 
 if [ $EXT_DISPLAY_COUNT == 1  ]; then
 	autoterm_multi

@@ -1,6 +1,7 @@
 # paths
 export PATH=/usr/local/sbin:/usr/local/opt/node@8/bin:$PATH:$HOME/bin:$HOME/bin/scripts
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # auto terminal placement
 LC_TTY=`tty | sed -e's/\/dev\/ttys0*//'`
@@ -11,14 +12,17 @@ export LC_TTY
 gtimeout 1 autoterm # use timeout because osascript randomly hangs sometimes
 
 # prompt
-if [ ! "$HOST" ]; then
-  HOST=`hostname -s`
+if [ ! "$NICK" ]; then
+  NICK=`hostname -s`
 fi
-export PS1='[\u@$HOST] \W > '
+export PS1='[\u@$NICK] \W > '
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH:$HOME/bin"
 eval "$(rbenv init -)"
+
+# ansible
+export ANSIBLE_VAULT_PASSWORD_FILE=`command -v lastpass-ansible`
 
 # cicognara
 export CATALOGO_VERSION=v1.1

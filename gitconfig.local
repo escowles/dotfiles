@@ -6,7 +6,7 @@
 [core]
   excludesfile = ~/.gitignore
 [diff "ansible-vault"]
-  textconv = ansible-vault view
+	textconv = ansible-vault view
 [diff "tnsnames.org"]
   textconv = ansible-vault view
 [commit]
