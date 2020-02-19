@@ -33,11 +33,8 @@ export SLACK_DEFAULT_EMOJI=house_with_garden
 export SLACK_DEFAULT_STATUS="working from home"
 export PATH=$PATH:$HOME/bin/slack
 
-# host aliases
-# ssh autocomplete
-#for host in `grep "^Host" ~/.ssh/config | cut -d\  -f2`; do
-#	alias $host="ssh -t $host env NICK=$host /bin/bash"
-#done
+# asdf
+. /usr/local/opt/asdf/asdf.sh
 
 # other aliases
 alias ds='du -sm * | sort -rn'
