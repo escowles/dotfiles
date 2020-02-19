@@ -1,5 +1,5 @@
 # paths
-export PATH=/usr/local/sbin:/usr/local/opt/node@8/bin:$PATH:$HOME/bin:$HOME/bin/scripts
+export PATH=/usr/local/sbin:/usr/local/opt/node@8/bin:/usr/local/opt/openjdk/bin:$PATH:$HOME/bin:$HOME/bin/scripts
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
@@ -16,10 +16,6 @@ if [ ! "$NICK" ]; then
   NICK=`hostname -s`
 fi
 export PS1='[\u@$NICK] \W > '
-
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH:$HOME/bin"
-eval "$(rbenv init -)"
 
 # ansible
 export ANSIBLE_VAULT_PASSWORD_FILE=`command -v lastpass-ansible`
@@ -45,6 +41,8 @@ export PATH=$PATH:$HOME/bin/slack
 
 # other aliases
 alias ds='du -sm * | sort -rn'
+alias foreman='bundle exec foreman'
+alias rails='bundle exec rails'
 alias rake='bundle exec rake'
 alias rspec='bundle exec rspec'
 alias rubocop='bundle exec rubocop'
