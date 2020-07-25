@@ -29,8 +29,8 @@ export TEIPATH=public/catalogo.tei.xml
 export COVERAGE=1
 
 # slack (see https://github.com/escowles/slack_scripts)
-export SLACK_DEFAULT_EMOJI=princeton
-export SLACK_DEFAULT_STATUS="on campus"
+export SLACK_DEFAULT_EMOJI=house_with_garden
+export SLACK_DEFAULT_STATUS="working at home"
 export PATH=$PATH:$HOME/bin/slack
 
 # asdf
