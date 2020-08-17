@@ -35,6 +35,7 @@ export PATH=$PATH:$HOME/bin/slack
 
 # asdf
 . /usr/local/opt/asdf/asdf.sh
+export JAVA_HOME=$(asdf where java)
 
 # other aliases
 alias ds='du -sm * | sort -rn'
