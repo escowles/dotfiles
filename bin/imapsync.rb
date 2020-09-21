@@ -2,6 +2,8 @@
 
 # imapsync.rb - sync messages from one imap server to another
 #
+# TODO: error handling, probably reconnecting if connection is stale...
+#
 # configuration goes in ~/.imapsync/config.yml, which should look like:
 #
 # servers:
