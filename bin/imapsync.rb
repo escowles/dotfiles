@@ -2,8 +2,6 @@
 
 # imapsync.rb - sync messages from one imap server to another
 #
-# TODO: error handling, probably reconnecting if connection is stale...
-#
 # configuration goes in ~/.imapsync/config.yml, which should look like:
 #
 # servers:
@@ -79,17 +77,35 @@ end
   # destination mbox
   skip = 0
   copy = 0
+  src_errors = 0
+  dst_errors = 0
   stat = src_imap.examine(props["from_mbox"])
   src_imap.search(["TO", "*"]).each do |message_id|
-    msg = src_imap.fetch(message_id, ["ENVELOPE", "RFC822", "FLAGS", "INTERNALDATE"]).first
+    begin
+      msg = src_imap.fetch(message_id, ["ENVELOPE", "RFC822", "FLAGS", "INTERNALDATE"]).first
+    rescue
+      src_errors += 1
+      unless src_errors > 3
+        src_imap = get_connection(props["from_server"])
+        retry
+      end
+    end
     msg_id = msg.attr['ENVELOPE'].message_id
     if exists?(dst_imap, msg_id)
       skip += 1
       puts "#{name} #{copy}/#{skip} skip #{msg_id}"
     else
       copy += 1
-      puts "#{name} #{copy}/#{skip} copy #{msg_id}"
-      dst_imap.append(dst_mbox, msg.attr['RFC822'], msg.attr['FLAGS'], msg.attr['INTERNALDATE'])
+      begin
+        puts "#{name} #{copy}/#{skip} copy #{msg_id}"
+        dst_imap.append(dst_mbox, msg.attr['RFC822'], msg.attr['FLAGS'], msg.attr['INTERNALDATE'])
+      rescue
+        dst_errors += 1
+        unless dst_errors > 3
+          dst_imap = get_connection(props["to_server"])
+          retry
+        end
+      end
     end
   end
 end
