@@ -80,9 +80,10 @@ end
   src_errors = 0
   dst_errors = 0
   stat = src_imap.examine(props["from_mbox"])
-  src_imap.search(["TO", "*"]).each do |message_id|
+  src_imap.search(["TO", "*"]).each do |uid|
+    # TODO: fetch message ids and check here, instead of fetching and checking each one
     begin
-      msg = src_imap.fetch(message_id, ["ENVELOPE", "RFC822", "FLAGS", "INTERNALDATE"]).first
+      msg = src_imap.fetch(uid, ["ENVELOPE", "RFC822", "FLAGS", "INTERNALDATE"]).first
     rescue
       src_errors += 1
       unless src_errors > 3
