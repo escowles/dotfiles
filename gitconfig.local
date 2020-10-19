@@ -13,3 +13,5 @@
   template = ~/.gitmessage
 [alias]
   fixup = !git add --all && git commit --amend --no-edit
+[pull]
+	rebase = true
