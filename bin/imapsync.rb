@@ -40,11 +40,6 @@ require "yaml"
 
 @connection_pool = {}
 
-# check if a message with the given msg_id exists in the given imap server
-def exists?(imap, msg_id)
-  imap.search(["HEADER", "Message-ID", msg_id]).any?
-end
-
 # load a connection from the pool, or connect to the server
 def get_connection(profile)
   return @connection_pool[profile] if @connection_pool[profile]
@@ -54,6 +49,21 @@ def get_connection(profile)
   con.login(props["user"], props["pass"])
   @connection_pool[profile] = con
   con
+end
+
+def fetch_ids(imap_server)
+  uids = imap_server.uid_search(['ALL'])
+  real_ids = []
+
+  n = 0
+  while n < uids.size
+    imap_server.uid_fetch(uids[n, 1024], ['ENVELOPE']).each do |m|
+      real_ids << m.attr['ENVELOPE'].message_id.strip
+    end
+    n += 1024
+  end
+
+  real_ids
 end
 
 # load configuration from yaml file
@@ -73,6 +83,9 @@ end
   end
   dst_imap.select(dst_mbox)
 
+  # list all destination mailbox messages
+  dst_ids = fetch_ids(dst_imap)
+
   # select source mbox, list messages, and copy messages that don't already exist to
   # destination mbox
   skip = 0
@@ -80,8 +93,9 @@ end
   src_errors = 0
   dst_errors = 0
   stat = src_imap.examine(props["from_mbox"])
-  src_imap.search(["TO", "*"]).each do |uid|
-    # TODO: fetch message ids and check here, instead of fetching and checking each one
+  src_ids = fetch_ids(src_imap)
+  puts "skipping #{(src_ids & dst_ids).size} messages already copied..."
+  (src_ids - dst_ids).each do |uid|
     begin
       msg = src_imap.fetch(uid, ["ENVELOPE", "RFC822", "FLAGS", "INTERNALDATE"]).first
     rescue
@@ -92,7 +106,7 @@ end
       end
     end
     msg_id = msg.attr['ENVELOPE'].message_id
-    if exists?(dst_imap, msg_id)
+    if dst_ids.include?(msg_id)
       skip += 1
       puts "#{name} #{copy}/#{skip} skip #{msg_id}"
     else
