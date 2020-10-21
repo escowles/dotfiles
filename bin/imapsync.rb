@@ -84,6 +84,7 @@ end
   dst_imap.select(dst_mbox)
 
   # list all destination mailbox messages
+  puts "listing destination ids"
   dst_ids = fetch_ids(dst_imap)
 
   # select source mbox, list messages, and copy messages that don't already exist to
@@ -92,15 +93,16 @@ end
   copy = 0
   src_errors = 0
   dst_errors = 0
-  stat = src_imap.examine(props["from_mbox"])
-  src_ids = fetch_ids(src_imap)
-  puts "skipping #{(src_ids & dst_ids).size} messages already copied..."
-  (src_ids - dst_ids).each do |uid|
+  src_imap.examine(props["from_mbox"])
+
+  src_imap.search(['ALL']).each do |mid|
     begin
-      msg = src_imap.fetch(uid, ["ENVELOPE", "RFC822", "FLAGS", "INTERNALDATE"]).first
-    rescue
+      msg = src_imap.fetch(mid, ["ENVELOPE", "RFC822", "FLAGS", "INTERNALDATE"]).first
+    rescue Exception => e
       src_errors += 1
-      unless src_errors > 3
+      if src_errors > 3
+        raise e
+      else
         src_imap = get_connection(props["from_server"])
         retry
       end
