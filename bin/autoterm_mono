@@ -8,10 +8,10 @@
 #   cols = 80, term width = 570, window width = 585, frame = 595
 #   rows = 28, term height = 455, window height = 478, frame = 488
 
-COLS=86     # pixels for xterm: 570  # (c x 7) + 10
-ROWS=20     #                   455  # (r x 16) + 7
-W=720 # $COLS + $SCROLL_BAR + $PADDING
-H=440 # $ROWS + $MENU_BAR + $PADDING
+COLS=85     # pixels for xterm: 570  # (c x 7) + 10
+ROWS=21     #                   455  # (r x 16) + 7
+W=700 # $COLS + $SCROLL_BAR + $PADDING
+H=425 # $ROWS + $MENU_BAR + $PADDING
 OFF=4
 OFF_OVER=0
 
