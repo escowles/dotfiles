@@ -1,5 +1,5 @@
 # paths
-export PATH=/usr/local/sbin:/usr/local/opt/node@8/bin:/usr/local/opt/openjdk/bin:$PATH:$HOME/bin:$HOME/bin/scripts
+export PATH=/usr/local/bin:$PATH:$HOME/bin:$HOME/bin/scripts
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
@@ -35,7 +35,10 @@ export PATH=$PATH:$HOME/bin/slack
 
 # asdf
 . /usr/local/opt/asdf/asdf.sh
-export JAVA_HOME=$(asdf where java)
+#. /opt/homebrew/Cellar/asdf/0.8.0/asdf.sh
+#export JAVA_HOME=$(asdf where java)
+export NODE_PATH=$NODE_PATH:$HOME/Library/node_modules
+alias npm='npm --prefix ~/Library'
 
 # other aliases
 alias ds='du -sm * | sort -rn'
@@ -47,3 +50,9 @@ alias rubocop='bundle exec rubocop'
 alias vi=/usr/bin/vim
 alias vpn='open -a "SonicWALL Mobile Connect.app"'
 alias xl='open -a "Microsoft Excel.app"'
+
+# homebrew
+#eval $(/opt/homebrew/bin/brew shellenv)
+eval $(/usr/local/bin/brew shellenv)
+alias ibrew="arch -x86_64 /usr/local/bin/brew"
+alias asdf="arch -x86_64 /usr/local/opt/asdf/bin/asdf"
