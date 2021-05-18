@@ -6,7 +6,9 @@ FULL_LIGHTS=7,8,9
 HALF_LIGHTS=1
 ALL_LIGHTS=$FULL_LIGHTS,$HALF_LIGHTS
 VAL=210
-if [ "$1" ]; then
+if [ "$1" = "max" ];then
+  VAL=255
+elif [ "$1" ]; then
   VAL=$1
 fi
 HALF_VAL=$(( $VAL / 2 ))
