@@ -6,7 +6,7 @@ BRANCH=`git status | grep "On branch" | cut -d\  -f3`
 echo $BRANCH
 
 PWD=`pwd`
-STEM=`git remote -v| grep origin | grep fetch | sed -e's/.*@//' -e's/\.git.*//' -e's/:/\//'`
+STEM=`git remote -v| grep origin | grep fetch | sed -e's/.*@//' -e's/\.git.*//' -e's/:/\//' -e's/ .*//'`
 BASE="https://$STEM"
 echo $BASE
 

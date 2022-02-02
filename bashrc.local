@@ -9,7 +9,7 @@ if [ ! "$LC_TTY" ]; then
     LC_TTY=0
 fi
 export LC_TTY
-gtimeout 1 autoterm # use timeout because osascript randomly hangs sometimes
+autoterm
 
 # prompt
 if [ ! "$NICK" ]; then
@@ -34,9 +34,7 @@ export SLACK_DEFAULT_STATUS="working at home"
 export PATH=$PATH:$HOME/bin/slack
 
 # asdf
-. /usr/local/opt/asdf/asdf.sh
-#. /opt/homebrew/Cellar/asdf/0.8.0/asdf.sh
-#export JAVA_HOME=$(asdf where java)
+#. /usr/local/opt/asdf/asdf.sh
 export NODE_PATH=$NODE_PATH:$HOME/Library/node_modules
 alias npm='npm --prefix ~/Library'
 
@@ -48,11 +46,9 @@ alias rake='bundle exec rake'
 alias rspec='bundle exec rspec'
 alias rubocop='bundle exec rubocop'
 alias vi=/usr/bin/vim
-alias vpn='open -a "SonicWALL Mobile Connect.app"'
 alias xl='open -a "Microsoft Excel.app"'
 
 # homebrew
-#eval $(/opt/homebrew/bin/brew shellenv)
-eval $(/usr/local/bin/brew shellenv)
-alias ibrew="arch -x86_64 /usr/local/bin/brew"
-alias asdf="arch -x86_64 /usr/local/opt/asdf/bin/asdf"
+#eval $(/usr/local/bin/brew shellenv)
+#alias ibrew="arch -x86_64 /usr/local/bin/brew"
+#alias ibash="arch -x86_64 /bin/bash"
