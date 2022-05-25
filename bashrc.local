@@ -34,8 +34,7 @@ export TEIPATH=public/catalogo.tei.xml
 # enable coverage in rspec
 export COVERAGE=1
 
-# asdf
-#. /usr/local/opt/asdf/asdf.sh
+# node
 export NODE_PATH=$NODE_PATH:$HOME/Library/node_modules
 alias npm='npm --prefix ~/Library'
 
@@ -48,8 +47,3 @@ alias rspec='bundle exec rspec'
 alias rubocop='bundle exec rubocop'
 alias vi=/usr/bin/vim
 alias xl='open -a "Microsoft Excel.app"'
-
-# homebrew
-#eval $(/usr/local/bin/brew shellenv)
-#alias ibrew="arch -x86_64 /usr/local/bin/brew"
-#alias ibash="arch -x86_64 /bin/bash"
