@@ -13,9 +13,9 @@ autoterm
 
 # slack (see https://github.com/escowles/slack_scripts)
 export PATH=$PATH:$HOME/bin/slack
-export SLACK_DEFAULT_EMOJI=house_with_garden
+export SLACK_DEFAULT_STATUS=${SLACK_DEFAULT_STATUS:-"working at home"}
+export SLACK_DEFAULT_EMOJI=${SLACK_DEFAULT_EMOJI:-house_with_garden}
 export SLACK_EMOJI=$(label.to.emoji.sh ":$SLACK_DEFAULT_EMOJI:")
-export SLACK_DEFAULT_STATUS="working at home"
 
 # prompt
 if [ ! "$NICK" ]; then
