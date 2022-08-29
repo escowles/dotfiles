@@ -34,7 +34,9 @@ export TEIPATH=public/catalogo.tei.xml
 # enable coverage in rspec
 export COVERAGE=1
 
-# node
+# asdf
+#. /usr/local/opt/asdf/asdf.sh
+PATH=$HOME/.asdf/shims:$PATH
 export NODE_PATH=$NODE_PATH:$HOME/Library/node_modules
 alias npm='npm --prefix ~/Library'
 

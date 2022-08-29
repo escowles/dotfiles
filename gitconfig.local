@@ -15,3 +15,5 @@
   fixup = !git add --all && git commit --amend --no-edit
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main
