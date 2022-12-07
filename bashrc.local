@@ -47,3 +47,4 @@ alias rspec='bundle exec rspec'
 alias rubocop='bundle exec rubocop'
 alias vi=/usr/bin/vim
 alias xl='open -a "Microsoft Excel.app"'
+alias jek='bundle exec jekyll s'
