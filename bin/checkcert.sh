@@ -10,4 +10,4 @@ EXP_IN=$(( ($EXP_S - $NOW_S) / (3600*24) ))
 if [ $EXP_IN -lt $WARN_DAYS ]; then
   WARN="DANGER "
 fi
-echo "$WARN$URL $EXP_IN days until expiration ($EXP)"
+echo "$WARN$EXP_IN $URL days until expiration ($EXP)"
