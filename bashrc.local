@@ -50,3 +50,9 @@ alias rubocop='bundle exec rubocop'
 alias vi=/usr/bin/vim
 alias xl='open -a "Microsoft Excel.app"'
 alias jek='bundle exec jekyll s'
+alias bee='$HOME/src/bee_helper/bin/bee_helper'
+
+# homebrew
+#eval $(/usr/local/bin/brew shellenv)
+#alias ibrew="arch -x86_64 /usr/local/bin/brew"
+#alias ibash="arch -x86_64 /bin/bash"
