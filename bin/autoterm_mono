@@ -7,6 +7,7 @@
 #   padding = 10
 #   cols = 80, term width = 570, window width = 585, frame = 595
 #   rows = 28, term height = 455, window height = 478, frame = 488
+echo XXX
 
 COLS=85     # pixels for xterm: 570  # (c x 7) + 10
 ROWS=21     #                   455  # (r x 16) + 7
@@ -15,7 +16,6 @@ H=425 # $ROWS + $MENU_BAR + $PADDING
 OFF=4
 OFF_OVER=0
 
-### 4-up
 if [ "$LC_TTY" = '0' ]; then
 	X=$OFF
 	Y=0
@@ -33,4 +33,4 @@ else
 	Y=$(( $LC_TTY * 20 ))
 fi
 
-osascript $HOME/bin/scripts/termpos.scpt $X $Y $COLS $ROWS
+osascript $HOME/src/dotfiles/bin/termpos.scpt $X $Y $COLS $ROWS

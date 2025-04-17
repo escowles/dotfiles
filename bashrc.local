@@ -1,5 +1,5 @@
 # paths
-export PATH=/usr/local/bin:$PATH:$HOME/bin:$HOME/bin/scripts
+export PATH=/usr/local/bin:$PATH:$HOME/bin:$HOME/src/dotfiles/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
@@ -12,7 +12,7 @@ export LC_TTY
 autoterm
 
 # slack (see https://github.com/escowles/slack_scripts)
-export PATH=$PATH:$HOME/bin/slack
+export PATH=$PATH:$HOME/src/slack_scripts
 export SLACK_DEFAULT_STATUS=${SLACK_DEFAULT_STATUS:-"working at home"}
 export SLACK_DEFAULT_EMOJI=${SLACK_DEFAULT_EMOJI:-house_with_garden}
 export SLACK_EMOJI=$(label.to.emoji.sh ":$SLACK_DEFAULT_EMOJI:")
