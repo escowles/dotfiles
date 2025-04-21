@@ -1,6 +1,6 @@
 # paths
 export PATH=/usr/local/bin:$PATH:$HOME/bin:$HOME/src/dotfiles/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # auto terminal placement
@@ -26,14 +26,6 @@ export PS1='$SLACK_EMOJI [\u@$NICK] \W > '
 # ansible
 export ANSIBLE_VAULT_PASSWORD_FILE=`command -v lastpass-ansible`
 
-# cicognara
-export CATALOGO_VERSION=v1.1
-export MARCPATH=public/cicognara.mrx.xml
-export TEIPATH=public/catalogo.tei.xml
-
-# enable coverage in rspec
-export COVERAGE=1
-
 # asdf
 #. /usr/local/opt/asdf/asdf.sh
 PATH=$HOME/.asdf/shims:$PATH
@@ -42,17 +34,7 @@ alias npm='npm --prefix ~/Library'
 
 # other aliases
 alias ds='du -sm * | sort -rn'
-alias foreman='bundle exec foreman'
-alias rails='bundle exec rails'
-alias rake='bundle exec rake'
-alias rspec='bundle exec rspec'
-alias rubocop='bundle exec rubocop'
 alias vi=/usr/bin/vim
 alias xl='open -a "Microsoft Excel.app"'
 alias jek='bundle exec jekyll s'
-alias bee='$HOME/src/bee_helper/bin/bee_helper'
-
-# homebrew
-#eval $(/usr/local/bin/brew shellenv)
-#alias ibrew="arch -x86_64 /usr/local/bin/brew"
-#alias ibash="arch -x86_64 /bin/bash"
+alias web='ruby -run -e httpd -- -p 4000 .'

@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+
+while ( $line = <STDIN> )
+{
+	chomp $line;
+	$line =~ s/([^a-zA-Z0-9])/'%'.uc(unpack("H*",$1))/eg;
+	$line =~ s/%21/!/g;
+	$line =~ s/%27/'/g;
+	$line =~ s/%28/(/g;
+	$line =~ s/%29/)/g;
+	$line =~ s/%2C/,/g;
+	$line =~ s/%2D/-/g;
+	$line =~ s/%2E/./g;
+	$line =~ s/%2F/\//g;
+
+	$line =~ s/_/%5F/g;
+	print "$line\n";
+}
