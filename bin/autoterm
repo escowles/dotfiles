@@ -1,10 +1,10 @@
 #!/bin/sh
 
-EXT_DISPLAY_COUNT=`system_profiler SPDisplaysDataType | grep -c "Main Display: No"`
+DISPLAY_COUNT=`system_profiler SPDisplaysDataType | grep Resolution | wc -l`
 
 if [ "$AUTOTERM_OVERRIDE" == "6up" ]; then
 	autoterm_6up
-elif [ $EXT_DISPLAY_COUNT == 1  ]; then
+elif [ $DISPLAY_COUNT -gt 1  ]; then
 	autoterm_multi
 else
 	autoterm_mono
