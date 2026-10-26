@@ -6,11 +6,11 @@ BT=$(ioreg -r -l -k BatteryPercent | grep "BatteryPercent\" = \|DeviceAddress\""
 function get_level {
   BT1="$1"
   BT2="$2"
-  LVL=$(echo "$BT" | grep -A 1 "$BT1" | grep "BatteryPercent" | sed -e's/.* = //' )
+  LVL=$(echo "$BT" | grep -B 1 "$BT1" | grep "BatteryPercent" | sed -e's/.* = //' )
   if [ "$LVL" ]; then
     echo $LVL
   else
-    echo "$BT" | grep -A 1 "$BT2" | grep "BatteryPercent" | sed -e's/.* = //'
+    echo "$BT" | grep -B 1 "$BT2" | grep "BatteryPercent" | sed -e's/.* = //'
   fi
 }
 
